@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pape&Gifts Isani · Papelería & Regalos</title>
+  <meta name="description" content="Papelería artesanal y regalos únicos para tus momentos especiales. Pascua, cumpleaños, navidad y más." />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; media-src 'self' blob:;" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --lila:       #c9b8d8;
+      --lila-dark:  #a891bc;
+      --lila-pale:  #ede6f4;
+      --crema:      #f5efe4;
+      --crema-dark: #e8dfd0;
+      --rosa:       #e8c4cc;
+      --rosa-pale:  #f7eaed;
+      --amarillo:   #e8d98a;
+      --amarillo-pale: #f5f0d0;
+      --text-dark:  #4a3f4a;
+      --text-mid:   #7a6a7a;
+      --text-light: #a898a8;
+      --white:      #fdfaf6;
+      --shadow:     rgba(74,63,74,0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--crema);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ─── GRAIN OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; opacity: 0.5;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--crema); }
+    ::-webkit-scrollbar-thumb { background: var(--lila); border-radius: 3px; }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 3rem;
+      background: rgba(245,239,228,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--crema-dark);
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      padding: 0.6rem 3rem;
+      box-shadow: 0 4px 30px var(--shadow);
+    }
+    .nav-logo {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 2rem;
+      color: var(--lila-dark);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--lila-dark); }
+    .nav-admin-btn {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--lila-pale);
+      color: var(--lila-dark);
+      border: 1px solid var(--lila);
+      padding: 0.45rem 1.2rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .nav-admin-btn:hover { background: var(--lila); color: #fff; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 1.5px; background: var(--text-dark); transition: all 0.3s; }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem 4rem 5rem 5rem;
+      position: relative; z-index: 2;
+    }
+    .hero-tag {
+      font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--rosa); font-weight: 400;
+      display: flex; align-items: center; gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-tag::before {
+      content: ''; width: 40px; height: 1px; background: var(--rosa);
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--text-dark);
+      margin-bottom: 1.8rem;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--lila-dark);
+    }
+    .hero-desc {
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--text-mid);
+      font-weight: 300;
+      max-width: 420px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      background: var(--lila-dark);
+      color: #fff;
+      border: none; padding: 0.9rem 2rem;
+      border-radius: 2px; cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--lila); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(168,145,188,0.35); }
+    .btn-outline {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+      background: transparent;
+      color: var(--text-mid);
+      border: 1px solid var(--crema-dark);
+      padding: 0.9rem 2rem;
+      border-radius: 2px; cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--lila); color: var(--lila-dark); }
+
+    .hero-right {
+      position: relative; overflow: hidden;
+      background: var(--lila-pale);
+    }
+    .hero-gallery-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      height: 100%; gap: 3px;
+    }
+    .hero-gallery-cell {
+      background: var(--crema-dark);
+      position: relative; overflow: hidden;
+      cursor: pointer;
+    }
+    .hero-gallery-cell:first-child { grid-row: span 2; }
+    .hero-gallery-cell img, .hero-gallery-cell video {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .hero-gallery-cell:hover img, .hero-gallery-cell:hover video { transform: scale(1.05); }
+    .hero-gallery-cell .placeholder-art {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.5rem;
+    }
+    .placeholder-art .icon { font-size: 2.5rem; opacity: 0.4; }
+    .placeholder-art span { font-size: 0.7rem; letter-spacing: 0.15em; color: var(--text-light); text-transform: uppercase; }
+
+    /* decorative circles */
+    .deco-circle {
+      position: absolute; border-radius: 50%; pointer-events: none;
+    }
+    .deco-c1 {
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, var(--rosa-pale) 0%, transparent 70%);
+      top: -80px; left: -80px; opacity: 0.7;
+    }
+    .deco-c2 {
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, var(--amarillo-pale) 0%, transparent 70%);
+      bottom: 100px; left: 120px; opacity: 0.8;
+    }
+
+    /* ─── FLOATING BADGE ─── */
+    .float-badge {
+      position: absolute; bottom: 3rem; right: -20px;
+      width: 110px; height: 110px;
+      background: var(--amarillo);
+      border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 8px 30px rgba(232,217,138,0.5);
+      animation: floatBadge 3s ease-in-out infinite;
+      z-index: 3;
+    }
+    .float-badge span:first-child {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 600;
+      color: var(--text-dark); line-height: 1;
+    }
+    .float-badge span:last-child {
+      font-size: 0.6rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-mid);
+    }
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ─── SECTION COMMONS ─── */
+    section { padding: 6rem 5rem; }
+    .section-tag {
+      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--rosa); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.7rem;
+    }
+    .section-tag::before { content: ''; width: 30px; height: 1px; background: var(--rosa); }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300; line-height: 1.2;
+      color: var(--text-dark); margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; color: var(--lila-dark); }
+    .section-sub {
+      font-size: 0.9rem; line-height: 1.9;
+      color: var(--text-mid); font-weight: 300;
+      max-width: 500px;
+    }
+
+    /* ─── ABOUT ─── */
+    #sobre-mi {
+      background: var(--white);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .about-media {
+      position: relative; height: 520px;
+    }
+    .about-img-main {
+      position: absolute; top: 0; left: 0;
+      width: 75%; height: 85%;
+      background: var(--lila-pale);
+      border-radius: 2px; overflow: hidden;
+    }
+    .about-img-main img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .about-img-accent {
+      position: absolute; bottom: 0; right: 0;
+      width: 55%; height: 60%;
+      background: var(--rosa-pale);
+      border-radius: 2px; overflow: hidden;
+      border: 6px solid var(--white);
+    }
+    .about-img-accent img { width: 100%; height: 100%; object-fit: cover; }
+    .about-deco-line {
+      position: absolute; top: 50%; left: 72%; transform: translateY(-50%);
+      width: 2px; height: 60%; background: var(--amarillo);
+      opacity: 0.6;
+    }
+
+    .about-content .greeting {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 2.5rem; color: var(--lila-dark);
+      margin-bottom: 0.5rem;
+    }
+    .about-content p {
+      font-size: 0.92rem; line-height: 2; color: var(--text-mid);
+      font-weight: 300; margin-bottom: 1.2rem;
+    }
+    .about-stats {
+      display: flex; gap: 2.5rem; margin-top: 2rem;
+      padding-top: 2rem; border-top: 1px solid var(--crema-dark);
+    }
+    .stat-item .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem; font-weight: 300;
+      color: var(--lila-dark);
+    }
+    .stat-item .label {
+      font-size: 0.72rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-light);
+    }
+
+    /* ─── CATEGORÍAS ─── */
+    #categorias { background: var(--crema); }
+    .cat-header { text-align: center; margin-bottom: 4rem; }
+    .cat-header .section-tag { justify-content: center; }
+    .cat-header .section-tag::before { display: none; }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .cat-card {
+      background: var(--white);
+      border-radius: 3px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+    }
+    .cat-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px var(--shadow); }
+    .cat-thumb {
+      height: 200px;
+      position: relative; overflow: hidden;
+    }
+    .cat-thumb img, .cat-thumb .ph-art {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .cat-card:hover .cat-thumb img { transform: scale(1.08); }
+    .ph-art {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+    }
+    .cat-info { padding: 1.4rem 1.4rem 1.8rem; }
+    .cat-info h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 400;
+      color: var(--text-dark); margin-bottom: 0.4rem;
+    }
+    .cat-info p { font-size: 0.8rem; color: var(--text-light); line-height: 1.6; }
+    .cat-dot {
+      position: absolute; top: 1rem; right: 1rem;
+      width: 8px; height: 8px; border-radius: 50%;
+    }
+
+    /* ─── GALERÍA ─── */
+    #galeria { background: var(--lila-pale); }
+    .gal-header { margin-bottom: 3rem; }
+    .gallery-masonry {
+      columns: 4; column-gap: 1rem;
+    }
+    .gal-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      border-radius: 3px; overflow: hidden;
+      cursor: pointer; position: relative;
+      transition: transform 0.4s;
+    }
+    .gal-item:hover { transform: scale(1.02); }
+    .gal-item img, .gal-item video {
+      width: 100%; display: block;
+    }
+    .gal-item .gal-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(74,63,74,0.5) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.4s;
+      display: flex; align-items: flex-end; padding: 1rem;
+    }
+    .gal-item:hover .gal-overlay { opacity: 1; }
+    .gal-overlay span { font-size: 0.72rem; letter-spacing: 0.15em; color: #fff; text-transform: uppercase; }
+
+    .gal-ph {
+      background: var(--crema);
+      min-height: 160px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.4rem;
+    }
+    .gal-ph .icon { font-size: 2rem; opacity: 0.35; }
+    .gal-ph span { font-size: 0.65rem; letter-spacing: 0.15em; color: var(--text-light); text-transform: uppercase; }
+
+    /* ─── LIGHTBOX ─── */
+    #lightbox {
+      display: none; position: fixed; inset: 0; z-index: 9000;
+      background: rgba(40,30,40,0.92); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img, #lightbox video {
+      max-width: 85vw; max-height: 85vh;
+      border-radius: 3px; box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+    #lightbox-close {
+      position: absolute; top: 2rem; right: 2rem;
+      font-size: 1.8rem; color: #fff; cursor: pointer;
+      background: none; border: none; opacity: 0.7; transition: opacity 0.3s;
+    }
+    #lightbox-close:hover { opacity: 1; }
+
+    /* ─── CONTACTO ─── */
+    #contacto {
+      background: var(--white);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    }
+    .contact-info .greeting {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 2rem; color: var(--lila-dark); margin-bottom: 1.5rem;
+    }
+    .contact-detail {
+      display: flex; align-items: flex-start; gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .contact-detail .icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--lila-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0; margin-top: 2px;
+    }
+    .contact-detail .text strong {
+      display: block; font-size: 0.8rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-dark); font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+    .contact-detail .text span {
+      font-size: 0.9rem; color: var(--text-mid); font-weight: 300;
+    }
+
+    .contact-form { }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label {
+      display: block; font-size: 0.72rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-mid);
+      margin-bottom: 0.5rem;
+    }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      background: var(--crema);
+      border: 1px solid var(--crema-dark);
+      border-radius: 2px;
+      padding: 0.85rem 1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem; color: var(--text-dark);
+      transition: border-color 0.3s;
+      outline: none;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: var(--lila);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-note {
+      font-size: 0.75rem; color: var(--text-light);
+      margin-top: 0.4rem;
+    }
+    .form-submit {
+      width: 100%; padding: 1rem;
+      background: var(--lila-dark); color: #fff;
+      border: none; border-radius: 2px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem; letter-spacing: 0.2em;
+      text-transform: uppercase; cursor: pointer;
+      transition: all 0.3s;
+    }
+    .form-submit:hover { background: var(--lila); transform: translateY(-2px); }
+    .form-success {
+      display: none; background: var(--amarillo-pale);
+      border: 1px solid var(--amarillo);
+      padding: 1rem; border-radius: 2px; margin-top: 1rem;
+      font-size: 0.85rem; color: var(--text-dark); text-align: center;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--text-dark);
+      color: var(--crema-dark);
+      padding: 4rem 5rem 2rem;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 4rem; margin-bottom: 3rem;
+    }
+    .footer-brand .logo {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 2.2rem; color: var(--lila);
+      display: block; margin-bottom: 1rem;
+    }
+    .footer-brand p {
+      font-size: 0.85rem; line-height: 1.9;
+      color: var(--text-light); font-weight: 300;
+    }
+    .footer-col h4 {
+      font-size: 0.7rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--lila-pale);
+      margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.7rem; }
+    .footer-col ul li a {
+      font-size: 0.85rem; color: var(--text-light);
+      text-decoration: none; font-weight: 300;
+      transition: color 0.3s;
+    }
+    .footer-col ul li a:hover { color: var(--lila-pale); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-bottom p { font-size: 0.75rem; color: var(--text-light); }
+    .social-links { display: flex; gap: 1rem; }
+    .social-links a {
+      width: 34px; height: 34px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-light); font-size: 0.9rem;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .social-links a:hover { border-color: var(--lila); color: var(--lila); }
+
+    /* ─── ADMIN PANEL ─── */
+    #admin-overlay {
+      display: none; position: fixed; inset: 0; z-index: 8000;
+      background: rgba(40,30,40,0.6); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center;
+    }
+    #admin-overlay.open { display: flex; }
+
+    /* LOGIN */
+    #admin-login {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 3rem;
+      width: 380px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    #admin-login h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 300;
+      color: var(--text-dark); margin-bottom: 0.3rem;
+    }
+    #admin-login .sub {
+      font-size: 0.8rem; color: var(--text-light); margin-bottom: 2rem;
+    }
+    #login-error {
+      display: none; background: #fdecea;
+      border: 1px solid #f5c6cb;
+      padding: 0.7rem 1rem; border-radius: 2px;
+      font-size: 0.8rem; color: #721c24;
+      margin-bottom: 1rem;
+    }
+    .login-attempts-msg {
+      font-size: 0.75rem; color: var(--text-light); margin-top: 0.5rem; text-align: center;
+    }
+    .btn-close-overlay {
+      position: absolute; top: 1rem; right: 1rem;
+      background: none; border: none; font-size: 1.4rem;
+      cursor: pointer; color: var(--text-light);
+      transition: color 0.3s;
+    }
+    .btn-close-overlay:hover { color: var(--text-dark); }
+
+    /* DASHBOARD */
+    #admin-dashboard {
+      display: none;
+      background: var(--white);
+      border-radius: 4px;
+      width: min(920px, 95vw);
+      max-height: 92vh;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+      flex-direction: column;
+    }
+    #admin-dashboard.open { display: flex; }
+    .dash-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem 2rem;
+      background: var(--text-dark); color: var(--crema);
+    }
+    .dash-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 300; color: var(--lila-pale);
+    }
+    .dash-header .dash-actions { display: flex; gap: 0.8rem; align-items: center; }
+    .dash-logout {
+      font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+      background: none; border: 1px solid rgba(255,255,255,0.2);
+      color: var(--text-light); padding: 0.4rem 1rem;
+      border-radius: 2px; cursor: pointer; transition: all 0.3s;
+    }
+    .dash-logout:hover { border-color: var(--rosa); color: var(--rosa); }
+
+    .dash-body {
+      display: grid; grid-template-columns: 220px 1fr;
+      flex: 1; overflow: hidden;
+    }
+    .dash-sidebar {
+      background: var(--crema); border-right: 1px solid var(--crema-dark);
+      padding: 1.5rem 0; overflow-y: auto;
+    }
+    .dash-nav-item {
+      display: flex; align-items: center; gap: 0.8rem;
+      padding: 0.8rem 1.5rem;
+      font-size: 0.82rem; color: var(--text-mid);
+      cursor: pointer; transition: all 0.3s;
+      border-left: 3px solid transparent;
+    }
+    .dash-nav-item:hover { background: var(--crema-dark); color: var(--text-dark); }
+    .dash-nav-item.active {
+      background: var(--lila-pale);
+      color: var(--lila-dark);
+      border-left-color: var(--lila-dark);
+    }
+    .dash-nav-item .nav-icon { font-size: 1rem; width: 20px; text-align: center; }
+
+    .dash-content {
+      overflow-y: auto; padding: 2rem;
+    }
+    .dash-panel { display: none; }
+    .dash-panel.active { display: block; }
+    .dash-panel h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 300;
+      color: var(--text-dark); margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem; border-bottom: 1px solid var(--crema-dark);
+    }
+
+    /* Upload Area */
+    .upload-zone {
+      border: 2px dashed var(--lila);
+      border-radius: 4px; padding: 2.5rem;
+      text-align: center; cursor: pointer;
+      transition: all 0.3s; margin-bottom: 1.5rem;
+      background: var(--lila-pale);
+    }
+    .upload-zone:hover, .upload-zone.drag-over {
+      background: var(--lila-pale); border-color: var(--lila-dark);
+    }
+    .upload-zone .upload-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+    .upload-zone p { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 0.4rem; }
+    .upload-zone .hint { font-size: 0.75rem; color: var(--text-light); }
+    .upload-zone input[type="file"] { display: none; }
+
+    .media-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 0.8rem; margin-top: 1rem;
+    }
+    .media-thumb {
+      position: relative; border-radius: 3px; overflow: hidden;
+      aspect-ratio: 1; background: var(--crema-dark);
+      cursor: pointer;
+    }
+    .media-thumb img, .media-thumb video {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .media-thumb .del-btn {
+      position: absolute; top: 4px; right: 4px;
+      background: rgba(180,50,50,0.8); color: #fff;
+      border: none; border-radius: 50%;
+      width: 22px; height: 22px; font-size: 0.7rem;
+      cursor: pointer; opacity: 0; transition: opacity 0.3s;
+    }
+    .media-thumb:hover .del-btn { opacity: 1; }
+    .media-type-badge {
+      position: absolute; bottom: 4px; left: 4px;
+      background: rgba(0,0,0,0.6); color: #fff;
+      font-size: 0.6rem; padding: 2px 5px; border-radius: 2px;
+    }
+
+    /* Profile form */
+    .profile-avatar-area {
+      display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;
+    }
+    .profile-avatar {
+      width: 100px; height: 100px; border-radius: 50%;
+      background: var(--lila-pale); border: 3px solid var(--lila);
+      overflow: hidden; cursor: pointer; position: relative;
+    }
+    .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .profile-avatar .avatar-overlay {
+      position: absolute; inset: 0;
+      background: rgba(168,145,188,0.6);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.3s;
+      font-size: 1.5rem;
+    }
+    .profile-avatar:hover .avatar-overlay { opacity: 1; }
+    .profile-avatar input { display: none; }
+
+    /* Status bar */
+    .status-bar {
+      background: var(--amarillo-pale); border: 1px solid var(--amarillo);
+      border-radius: 3px; padding: 0.8rem 1rem;
+      font-size: 0.82rem; color: var(--text-dark);
+      margin-bottom: 1rem; display: none;
+    }
+    .status-bar.show { display: block; }
+    .status-bar.success { background: #f0fdf4; border-color: #86efac; color: #166534; }
+    .status-bar.error { background: #fef2f2; border-color: #fca5a5; color: #991b1b; }
+
+    /* Preview section */
+    .preview-strip {
+      display: flex; gap: 0.5rem; overflow-x: auto;
+      padding: 0.5rem 0; margin-top: 0.8rem;
+    }
+    .preview-strip::-webkit-scrollbar { height: 4px; }
+    .preview-chip {
+      flex-shrink: 0; position: relative;
+      border-radius: 3px; overflow: hidden;
+      width: 80px; height: 80px; background: var(--crema-dark);
+    }
+    .preview-chip img, .preview-chip video {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .preview-chip .rm {
+      position: absolute; top: 2px; right: 2px;
+      background: rgba(180,40,40,0.8); color: #fff;
+      border: none; border-radius: 50%;
+      width: 18px; height: 18px; font-size: 0.6rem;
+      cursor: pointer;
+    }
+
+    /* ─── SECTION DIVIDER ─── */
+    .divider {
+      height: 1px; background: linear-gradient(to right, transparent, var(--lila), transparent);
+      margin: 0 5rem;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 4rem 1.5rem; }
+      #hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 3rem 1.5rem; }
+      .hero-right { height: 50vw; }
+      #sobre-mi { grid-template-columns: 1fr; }
+      .about-media { height: 300px; }
+      #contacto { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .gallery-masonry { columns: 2; }
+      .dash-body { grid-template-columns: 1fr; }
+      .dash-sidebar { display: flex; overflow-x: auto; padding: 0; border-right: none; border-bottom: 1px solid var(--crema-dark); }
+      .dash-nav-item { flex-direction: column; text-align: center; padding: 0.8rem 1rem; border-left: none; border-bottom: 3px solid transparent; white-space: nowrap; }
+      .dash-nav-item.active { border-left: none; border-bottom-color: var(--lila-dark); }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── TOAST ─── */
+    #toast {
+      position: fixed; bottom: 2rem; left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--text-dark); color: var(--crema);
+      padding: 0.8rem 2rem; border-radius: 3px;
+      font-size: 0.82rem; z-index: 99999;
+      transition: transform 0.4s ease;
+      pointer-events: none;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* categories colors */
+    .cat-cumpleanos .ph-art { background: var(--rosa-pale); }
+    .cat-navidad .ph-art { background: var(--amarillo-pale); }
+    .cat-pascua .ph-art { background: #f0f7e8; }
+    .cat-boda .ph-art { background: var(--lila-pale); }
+    .cat-sticker .ph-art { background: var(--crema-dark); }
+    .cat-custom .ph-art { background: var(--rosa-pale); }
+  </style>
+</head>
+<body>
+
+<!-- ─── TOAST ─── -->
+<div id="toast"></div>
+
+<!-- ─── LIGHTBOX ─── -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button id="lightbox-close" aria-label="Cerrar">✕</button>
+</div>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar" role="navigation" aria-label="Navegación principal">
+  <a href="#hero" class="nav-logo" aria-label="Inicio Pape&amp;Gifts Isani">Pape&amp;Gifts Isani</a>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#categorias">Productos</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-admin-btn" onclick="openAdminOverlay()" aria-label="Panel administrador">⚙ Admin</button>
+  <div class="hamburger" onclick="toggleMobile()" aria-label="Menú" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero" aria-label="Presentación">
+  <div class="hero-left">
+    <div class="deco-circle deco-c1"></div>
+    <div class="deco-circle deco-c2"></div>
+    <div class="hero-tag">Papelería artesanal &amp; regalos únicos</div>
+    <h1 class="hero-title">
+      Detalles que<br/>
+      <em>tocan el corazón</em>
+    </h1>
+    <p class="hero-desc">
+      Creaciones hechas con amor para tus momentos más especiales.
+      Cumpleaños, Pascua, Navidad, bodas y más.
+      Cada pedido es único, como tú.
+    </p>
+    <div class="hero-btns">
+      <a href="#categorias" class="btn-primary">Ver productos</a>
+      <a href="#contacto" class="btn-outline">Hacer pedido</a>
+    </div>
+  </div>
+  <div class="hero-right" id="hero-gallery">
+    <div class="hero-gallery-grid">
+      <div class="hero-gallery-cell" id="hg1">
+        <div class="placeholder-art">
+          <span class="icon">🎀</span>
+          <span>Foto principal</span>
+        </div>
+      </div>
+      <div class="hero-gallery-cell" id="hg2">
+        <div class="placeholder-art">
+          <span class="icon">🌸</span>
+          <span>Foto 2</span>
+        </div>
+      </div>
+      <div class="hero-gallery-cell" id="hg3">
+        <div class="placeholder-art">
+          <span class="icon">✨</span>
+          <span>Foto 3</span>
+        </div>
+      </div>
+    </div>
+    <div class="float-badge">
+      <span id="badge-num">100%</span>
+      <span id="badge-txt">Hecho a mano</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── SOBRE MÍ ─── -->
+<section id="sobre-mi" aria-label="Sobre Isani">
+  <div class="about-media reveal">
+    <div class="about-img-main" id="about-main-img">
+      <div class="placeholder-art" style="height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;">
+        <span style="font-size:3rem;opacity:0.3">🌷</span>
+        <span style="font-size:0.7rem;letter-spacing:0.15em;color:var(--text-light);text-transform:uppercase">Tu foto aquí</span>
+      </div>
+    </div>
+    <div class="about-img-accent" id="about-accent-img">
+      <div class="placeholder-art" style="height:100%;display:flex;align-items:center;justify-content:center;">
+        <span style="font-size:2rem;opacity:0.3">🎁</span>
+      </div>
+    </div>
+    <div class="about-deco-line"></div>
+  </div>
+  <div class="about-content reveal">
+    <div class="section-tag">Mi historia</div>
+    <div class="greeting" id="greeting-text">Hola, soy Isani</div>
+    <h2 class="section-title">Creando <em>magia</em> en papel</h2>
+    <p id="about-text-1">
+      Soy una apasionada del diseño y los detalles. Cada producto que creo nace 
+      de mi amor por hacer sentir especial a las personas en sus momentos únicos.
+    </p>
+    <p id="about-text-2">
+      Desde tarjetas personalizadas hasta kits completos para eventos, 
+      me dedico a transformar ideas en recuerdos que duran para siempre.
+    </p>
+    <div class="about-stats">
+      <div class="stat-item">
+        <div class="num" id="stat1-num">+150</div>
+        <div class="label" id="stat1-label">Clientes felices</div>
+      </div>
+      <div class="stat-item">
+        <div class="num" id="stat2-num">+300</div>
+        <div class="label" id="stat2-label">Productos creados</div>
+      </div>
+      <div class="stat-item">
+        <div class="num" id="stat3-num">3</div>
+        <div class="label" id="stat3-label">Años de experiencia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── CATEGORÍAS ─── -->
+<section id="categorias" aria-label="Nuestros productos">
+  <div class="cat-header">
+    <div class="section-tag">Lo que ofrezco</div>
+    <h2 class="section-title">Papelería para cada <em>ocasión</em></h2>
+  </div>
+  <div class="cat-grid" id="cat-grid">
+    <div class="cat-card cat-cumpleanos reveal">
+      <div class="cat-dot" style="background:var(--rosa)"></div>
+      <div class="cat-thumb">
+        <div class="ph-art">🎂</div>
+      </div>
+      <div class="cat-info">
+        <h3>Cumpleaños</h3>
+        <p>Tarjetas, banderines, kits de decoración y más para celebrar con estilo.</p>
+      </div>
+    </div>
+    <div class="cat-card cat-navidad reveal">
+      <div class="cat-dot" style="background:var(--amarillo)"></div>
+      <div class="cat-thumb">
+        <div class="ph-art">🎄</div>
+      </div>
+      <div class="cat-info">
+        <h3>Navidad</h3>
+        <p>Etiquetas, adornos, tarjetas navideñas y packaging lleno de magia.</p>
+      </div>
+    </div>
+    <div class="cat-card cat-pascua reveal">
+      <div class="cat-dot" style="background:#9dc88d"></div>
+      <div class="cat-thumb">
+        <div class="ph-art">🐣</div>
+      </div>
+      <div class="cat-info">
+        <h3>Pascua</h3>
+        <p>Detalles tiernos y coloridos para compartir con familia y amigos.</p>
+      </div>
+    </div>
+    <div class="cat-card cat-boda reveal">
+      <div class="cat-dot" style="background:var(--lila)"></div>
+      <div class="cat-thumb">
+        <div class="ph-art">💍</div>
+      </div>
+      <div class="cat-info">
+        <h3>Bodas &amp; Eventos</h3>
+        <p>Invitaciones, menús, seating chart y souvenirs personalizados.</p>
+      </div>
+    </div>
+    <div class="cat-card cat-sticker reveal">
+      <div class="cat-dot" style="background:var(--crema-dark)"></div>
+      <div class="cat-thumb">
+        <div class="ph-art">⭐</div>
+      </div>
+      <div class="cat-info">
+        <h3>Stickers &amp; Tags</h3>
+        <p>Etiquetas adhesivas, tags y sellos para personalizar cada detalle.</p>
+      </div>
+    </div>
+    <div class="cat-card cat-custom reveal">
+      <div class="cat-dot" style="background:var(--rosa)"></div>
+      <div class="cat-thumb">
+        <div class="ph-art">🎨</div>
+      </div>
+      <div class="cat-info">
+        <h3>Personalizado</h3>
+        <p>¿Tienes una idea especial? Cuéntame y la hacemos realidad juntas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── GALERÍA ─── -->
+<section id="galeria" aria-label="Galería de productos">
+  <div class="gal-header">
+    <div class="section-tag">Mis creaciones</div>
+    <h2 class="section-title">Una mirada a mi <em>mundo</em></h2>
+    <p class="section-sub">Cada pieza cuenta una historia. Haz clic en las imágenes para verlas mejor.</p>
+  </div>
+  <div class="gallery-masonry" id="gallery-masonry">
+    <!-- Placeholders -->
+    <div class="gal-item">
+      <div class="gal-ph"><span class="icon">📸</span><span>Foto 1</span></div>
+      <div class="gal-overlay"><span>Ver</span></div>
+    </div>
+    <div class="gal-item">
+      <div class="gal-ph" style="min-height:240px"><span class="icon">🎀</span><span>Foto 2</span></div>
+      <div class="gal-overlay"><span>Ver</span></div>
+    </div>
+    <div class="gal-item">
+      <div class="gal-ph" style="min-height:180px"><span class="icon">✉️</span><span>Foto 3</span></div>
+      <div class="gal-overlay"><span>Ver</span></div>
+    </div>
+    <div class="gal-item">
+      <div class="gal-ph" style="min-height:280px"><span class="icon">🌸</span><span>Foto 4</span></div>
+      <div class="gal-overlay"><span>Ver</span></div>
+    </div>
+    <div class="gal-item">
+      <div class="gal-ph"><span class="icon">🎁</span><span>Foto 5</span></div>
+      <div class="gal-overlay"><span>Ver</span></div>
+    </div>
+    <div class="gal-item">
+      <div class="gal-ph" style="min-height:200px"><span class="icon">⭐</span><span>Foto 6</span></div>
+      <div class="gal-overlay"><span>Ver</span></div>
+    </div>
+    <div class="gal-item">
+      <div class="gal-ph" style="min-height:220px"><span class="icon">🎄</span><span>Foto 7</span></div>
+      <div class="gal-overlay"><span>Ver</span></div>
+    </div>
+    <div class="gal-item">
+      <div class="gal-ph"><span class="icon">🐣</span><span>Foto 8</span></div>
+      <div class="gal-overlay"><span>Ver</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── CONTACTO ─── -->
+<section id="contacto" aria-label="Contacto">
+  <div class="contact-info reveal">
+    <div class="section-tag">Hablemos</div>
+    <div class="greeting">¿Lista para crear algo bonito?</div>
+    <h2 class="section-title">Escríbeme y hagamos <em>magia</em></h2>
+    <p class="section-sub" style="margin-bottom:2.5rem">
+      Cuéntame tu idea y con gusto te preparo una propuesta personalizada. 
+      Cada pedido mínimo es especial para mí.
+    </p>
+    <div class="contact-detail">
+      <div class="icon">📱</div>
+      <div class="text">
+        <strong>WhatsApp</strong>
+        <span id="contact-phone">+54 9 XXX XXX XXXX</span>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="icon">📷</div>
+      <div class="text">
+        <strong>Instagram</strong>
+        <span id="contact-instagram">@papegifts.isani</span>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="icon">✉️</div>
+      <div class="text">
+        <strong>Email</strong>
+        <span id="contact-email">hola@papegiftsisani.com</span>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div class="icon">📍</div>
+      <div class="text">
+        <strong>Ubicación</strong>
+        <span id="contact-location">Envíos a todo el país</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form reveal">
+    <div id="form-status" class="status-bar"></div>
+    <div class="form-group">
+      <label for="f-name">Tu nombre</label>
+      <input type="text" id="f-name" placeholder="María García" maxlength="100" autocomplete="name" />
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="f-email">Email</label>
+        <input type="email" id="f-email" placeholder="tu@email.com" maxlength="200" autocomplete="email" />
+      </div>
+      <div class="form-group">
+        <label for="f-phone">Teléfono (opcional)</label>
+        <input type="tel" id="f-phone" placeholder="+54 9..." maxlength="30" autocomplete="tel" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="f-occasion">Ocasión</label>
+      <select id="f-occasion">
+        <option value="">Seleccionar...</option>
+        <option>Cumpleaños</option>
+        <option>Navidad</option>
+        <option>Pascua</option>
+        <option>Boda / Evento</option>
+        <option>Stickers / Tags</option>
+        <option>Otro</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="f-msg">Contame tu idea ✨</label>
+      <textarea id="f-msg" placeholder="Hola Isani! Necesito..." maxlength="1000"></textarea>
+      <div class="form-note">Máximo 1000 caracteres. <span id="char-count">0</span>/1000</div>
+    </div>
+    <button class="form-submit" onclick="submitForm()" id="form-btn">Enviar consulta ✉️</button>
+    <div id="form-success" class="form-success">
+      🌸 ¡Gracias por escribir! Isani te responderá muy pronto con todo el amor del mundo.
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo">Pape&amp;Gifts Isani</span>
+      <p>Papelería artesanal y regalos únicos para tus momentos especiales. Cada detalle, hecho con amor.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Productos</h4>
+      <ul>
+        <li><a href="#categorias">Cumpleaños</a></li>
+        <li><a href="#categorias">Navidad</a></li>
+        <li><a href="#categorias">Pascua</a></li>
+        <li><a href="#categorias">Bodas</a></li>
+        <li><a href="#categorias">Stickers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#contacto">Hacer pedido</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Pape&amp;Gifts Isani · Hecho con 💜</p>
+    <div class="social-links">
+      <a href="#" aria-label="Instagram">📷</a>
+      <a href="#" aria-label="WhatsApp">💬</a>
+      <a href="#" aria-label="Facebook">📘</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── ADMIN OVERLAY ─── -->
+<div id="admin-overlay" role="dialog" aria-modal="true" aria-label="Panel de administración">
+  <!-- LOGIN -->
+  <div id="admin-login">
+    <button class="btn-close-overlay" onclick="closeAdminOverlay()" aria-label="Cerrar">✕</button>
+    <h2>Panel Admin</h2>
+    <p class="sub">Acceso exclusivo para Isani 🌸</p>
+    <div id="login-error" role="alert"></div>
+    <div class="form-group">
+      <label for="admin-user">Usuario</label>
+      <input type="text" id="admin-user" placeholder="isani" autocomplete="username" maxlength="50" />
+    </div>
+    <div class="form-group">
+      <label for="admin-pass">Contraseña</label>
+      <input type="password" id="admin-pass" placeholder="••••••••" autocomplete="current-password" maxlength="128"
+             onkeydown="if(event.key==='Enter') doLogin()" />
+    </div>
+    <button class="form-submit" onclick="doLogin()" id="login-btn">Entrar</button>
+    <p class="login-attempts-msg" id="attempts-msg"></p>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="admin-dashboard" role="main">
+    <div class="dash-header">
+      <h2>✨ Panel Pape&amp;Gifts Isani</h2>
+      <div class="dash-actions">
+        <span style="font-size:0.78rem;color:var(--lila-pale)">Hola, Isani 💜</span>
+        <button class="dash-logout" onclick="doLogout()">Cerrar sesión</button>
+        <button class="btn-close-overlay" onclick="closeAdminOverlay()" style="color:var(--text-light);top:auto;right:auto;position:static">✕</button>
+      </div>
+    </div>
+    <div class="dash-body">
+      <div class="dash-sidebar" role="navigation" aria-label="Menú administrador">
+        <div class="dash-nav-item active" onclick="switchPanel('panel-media')" data-panel="panel-media">
+          <span class="nav-icon">🖼️</span> Fotos &amp; Videos
+        </div>
+        <div class="dash-nav-item" onclick="switchPanel('panel-profile')" data-panel="panel-profile">
+          <span class="nav-icon">👩</span> Mi perfil
+        </div>
+        <div class="dash-nav-item" onclick="switchPanel('panel-contact')" data-panel="panel-contact">
+          <span class="nav-icon">📱</span> Contacto
+        </div>
+        <div class="dash-nav-item" onclick="switchPanel('panel-hero')" data-panel="panel-hero">
+          <span class="nav-icon">🌟</span> Hero
+        </div>
+        <div class="dash-nav-item" onclick="switchPanel('panel-stats')" data-panel="panel-stats">
+          <span class="nav-icon">📊</span> Estadísticas
+        </div>
+      </div>
+      <div class="dash-content">
+
+        <!-- MEDIA PANEL -->
+        <div class="dash-panel active" id="panel-media">
+          <h3>🖼️ Galería — Fotos &amp; Videos</h3>
+          <div id="status-media" class="status-bar"></div>
+          <label class="upload-zone" id="upload-zone-gal" tabindex="0"
+                 ondragover="dragOver(event,'upload-zone-gal')" ondragleave="dragLeave('upload-zone-gal')" ondrop="dropFiles(event,'gallery')">
+            <input type="file" id="gal-file-input" accept="image/*,video/*" multiple onchange="handleFiles(this.files,'gallery')" />
+            <div class="upload-icon">📁</div>
+            <p>Arrastrá fotos o videos aquí</p>
+            <p class="hint">JPG, PNG, GIF, MP4, MOV · Máx 30MB por archivo</p>
+          </label>
+          <div class="media-grid" id="gallery-admin-grid"></div>
+        </div>
+
+        <!-- PROFILE PANEL -->
+        <div class="dash-panel" id="panel-profile">
+          <h3>👩 Mi perfil personal</h3>
+          <div id="status-profile" class="status-bar"></div>
+          <div class="profile-avatar-area">
+            <label class="profile-avatar" tabindex="0" title="Cambiar foto de perfil">
+              <img id="profile-avatar-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='40' r='25' fill='%23c9b8d8'/%3E%3Cellipse cx='50' cy='85' rx='35' ry='25' fill='%23c9b8d8'/%3E%3C/svg%3E" alt="Foto de perfil" />
+              <div class="avatar-overlay">📷</div>
+              <input type="file" id="avatar-input" accept="image/*" onchange="handleAvatar(this)" />
+            </label>
+            <div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--text-dark)" id="profile-name-display">Isani</div>
+              <div style="font-size:0.8rem;color:var(--text-light)">Fundadora · Pape&amp;Gifts Isani</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Nombre que aparece en el saludo</label>
+            <input type="text" id="p-greeting" value="Hola, soy Isani" maxlength="60" placeholder="Hola, soy Isani" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Párrafo 1 (descripción)</label>
+              <textarea id="p-bio1" maxlength="300" placeholder="Soy una apasionada del diseño...">Soy una apasionada del diseño y los detalles. Cada producto que creo nace de mi amor por hacer sentir especial a las personas en sus momentos únicos.</textarea>
+            </div>
+            <div class="form-group">
+              <label>Párrafo 2</label>
+              <textarea id="p-bio2" maxlength="300" placeholder="Desde tarjetas...">Desde tarjetas personalizadas hasta kits completos para eventos, me dedico a transformar ideas en recuerdos que duran para siempre.</textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Foto principal (izquierda grande)</label>
+            <label class="upload-zone" style="padding:1.2rem">
+              <input type="file" accept="image/*" onchange="setAboutImg(this,'main')" />
+              <p style="font-size:0.85rem">Click para cambiar foto principal del "Sobre mí"</p>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Foto secundaria (derecha pequeña)</label>
+            <label class="upload-zone" style="padding:1.2rem">
+              <input type="file" accept="image/*" onchange="setAboutImg(this,'accent')" />
+              <p style="font-size:0.85rem">Click para cambiar foto secundaria</p>
+            </label>
+          </div>
+          <button class="form-submit" onclick="saveProfile()">Guardar perfil ✨</button>
+        </div>
+
+        <!-- CONTACT PANEL -->
+        <div class="dash-panel" id="panel-contact">
+          <h3>📱 Información de contacto</h3>
+          <div id="status-contact" class="status-bar"></div>
+          <div class="form-group">
+            <label>Número de WhatsApp</label>
+            <input type="tel" id="c-phone" value="+54 9 XXX XXX XXXX" maxlength="30" />
+          </div>
+          <div class="form-group">
+            <label>Usuario de Instagram</label>
+            <input type="text" id="c-instagram" value="@papegifts.isani" maxlength="60" />
+          </div>
+          <div class="form-group">
+            <label>Email de contacto</label>
+            <input type="email" id="c-email" value="hola@papegiftsisani.com" maxlength="100" />
+          </div>
+          <div class="form-group">
+            <label>Ubicación / Envíos</label>
+            <input type="text" id="c-location" value="Envíos a todo el país" maxlength="100" />
+          </div>
+          <button class="form-submit" onclick="saveContact()">Actualizar contacto ✨</button>
+        </div>
+
+        <!-- HERO PANEL -->
+        <div class="dash-panel" id="panel-hero">
+          <h3>🌟 Imágenes del Hero (portada)</h3>
+          <div id="status-hero" class="status-bar"></div>
+          <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:1.5rem">
+            Estas imágenes aparecen en la sección principal de la página al entrar.
+          </p>
+          <div class="form-group">
+            <label>Imagen principal (izquierda grande)</label>
+            <label class="upload-zone" style="padding:1.2rem">
+              <input type="file" accept="image/*,video/*" onchange="setHeroImg(this,0)" />
+              <p style="font-size:0.85rem">Click para cargar imagen 1</p>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Imagen 2 (arriba derecha)</label>
+            <label class="upload-zone" style="padding:1.2rem">
+              <input type="file" accept="image/*,video/*" onchange="setHeroImg(this,1)" />
+              <p style="font-size:0.85rem">Click para cargar imagen 2</p>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Imagen 3 (abajo derecha)</label>
+            <label class="upload-zone" style="padding:1.2rem">
+              <input type="file" accept="image/*,video/*" onchange="setHeroImg(this,2)" />
+              <p style="font-size:0.85rem">Click para cargar imagen 3</p>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>Texto del badge (ej: "100%")</label>
+            <input type="text" id="badge-num-input" value="100%" maxlength="10" />
+          </div>
+          <div class="form-group">
+            <label>Subtexto del badge (ej: "Hecho a mano")</label>
+            <input type="text" id="badge-txt-input" value="Hecho a mano" maxlength="20" />
+          </div>
+          <button class="form-submit" onclick="saveHero()">Guardar hero ✨</button>
+        </div>
+
+        <!-- STATS PANEL -->
+        <div class="dash-panel" id="panel-stats">
+          <h3>📊 Mis estadísticas</h3>
+          <div id="status-stats" class="status-bar"></div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Número 1 (ej: +150)</label>
+              <input type="text" id="s-num1" value="+150" maxlength="10" />
+            </div>
+            <div class="form-group">
+              <label>Etiqueta 1</label>
+              <input type="text" id="s-lbl1" value="Clientes felices" maxlength="30" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Número 2</label>
+              <input type="text" id="s-num2" value="+300" maxlength="10" />
+            </div>
+            <div class="form-group">
+              <label>Etiqueta 2</label>
+              <input type="text" id="s-lbl2" value="Productos creados" maxlength="30" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Número 3</label>
+              <input type="text" id="s-num3" value="3" maxlength="10" />
+            </div>
+            <div class="form-group">
+              <label>Etiqueta 3</label>
+              <input type="text" id="s-lbl3" value="Años de experiencia" maxlength="30" />
+            </div>
+          </div>
+          <button class="form-submit" onclick="saveStats()">Actualizar estadísticas ✨</button>
+        </div>
+
+      </div><!-- /dash-content -->
+    </div><!-- /dash-body -->
+  </div><!-- /admin-dashboard -->
+</div><!-- /admin-overlay -->
+
+<script>
+/* ═══════════════════════════════════════════
+   SECURITY & SANITIZATION
+═══════════════════════════════════════════ */
+const MAX_FILE_SIZE = 30 * 1024 * 1024; // 30MB
+const ALLOWED_IMG  = ['image/jpeg','image/png','image/gif','image/webp'];
+const ALLOWED_VID  = ['video/mp4','video/webm','video/quicktime'];
+const ALLOWED_ALL  = [...ALLOWED_IMG, ...ALLOWED_VID];
+
+function sanitize(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+function sanitizeAttr(str) {
+  return String(str).replace(/[<>"'&]/g,'');
+}
+function validateFile(file, allowedTypes = ALLOWED_ALL) {
+  if (!allowedTypes.includes(file.type)) return 'Tipo de archivo no permitido.';
+  if (file.size > MAX_FILE_SIZE) return 'El archivo supera el límite de 30MB.';
+  return null;
+}
+
+/* ═══════════════════════════════════════════
+   AUTH  (frontend demo — in production use server-side auth)
+═══════════════════════════════════════════ */
+// Default credentials — change to your own!
+const ADMIN_USER = 'isani';
+const ADMIN_PASS = 'Isani2025!';
+
+let loginAttempts   = 0;
+let lockoutUntil    = 0;
+let sessionToken    = null;
+
+function generateToken() {
+  const arr = new Uint8Array(24);
+  crypto.getRandomValues(arr);
+  return Array.from(arr, b => b.toString(16).padStart(2,'0')).join('');
+}
+
+function doLogin() {
+  const now = Date.now();
+  if (now < lockoutUntil) {
+    const secs = Math.ceil((lockoutUntil - now) / 1000);
+    showLoginError(`Demasiados intentos. Esperá ${secs}s.`);
+    return;
+  }
+  const user = document.getElementById('admin-user').value.trim();
+  const pass = document.getElementById('admin-pass').value;
+  if (!user || !pass) { showLoginError('Completá usuario y contraseña.'); return; }
+
+  if (user === ADMIN_USER && pass === ADMIN_PASS) {
+    loginAttempts = 0;
+    sessionToken  = generateToken();
+    document.getElementById('admin-login').style.display     = 'none';
+    document.getElementById('admin-dashboard').classList.add('open');
+    loadAdminData();
+  } else {
+    loginAttempts++;
+    if (loginAttempts >= 5) {
+      lockoutUntil = Date.now() + 30000; // 30s lockout
+      showLoginError('Cuenta bloqueada 30 segundos por seguridad.');
+      document.getElementById('attempts-msg').textContent = '';
+    } else {
+      showLoginError('Usuario o contraseña incorrectos.');
+      document.getElementById('attempts-msg').textContent = `Intentos: ${loginAttempts}/5`;
+    }
+    document.getElementById('admin-pass').value = '';
+  }
+}
+function showLoginError(msg) {
+  const el = document.getElementById('login-error');
+  el.textContent = msg; el.style.display = 'block';
+}
+function doLogout() {
+  sessionToken = null;
+  document.getElementById('admin-dashboard').classList.remove('open');
+  document.getElementById('admin-login').style.display = 'block';
+  document.getElementById('admin-pass').value = '';
+  document.getElementById('login-error').style.display = 'none';
+  document.getElementById('attempts-msg').textContent = '';
+}
+function requireAuth() {
+  if (!sessionToken) { doLogout(); return false; }
+  return true;
+}
+
+/* ═══════════════════════════════════════════
+   OVERLAY
+═══════════════════════════════════════════ */
+function openAdminOverlay() {
+  document.getElementById('admin-overlay').classList.add('open');
+}
+function closeAdminOverlay() {
+  document.getElementById('admin-overlay').classList.remove('open');
+}
+document.getElementById('admin-overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('admin-overlay')) closeAdminOverlay();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeAdminOverlay();
+});
+
+/* ═══════════════════════════════════════════
+   PANEL SWITCHING
+═══════════════════════════════════════════ */
+function switchPanel(id) {
+  document.querySelectorAll('.dash-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.dash-nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelector(`[data-panel="${id}"]`).classList.add('active');
+}
+
+/* ═══════════════════════════════════════════
+   IN-MEMORY STORE  (simulate backend)
+═══════════════════════════════════════════ */
+const store = {
+  gallery: [],      // {url, type:'image'|'video', name}
+  heroImgs: [null, null, null],
+  avatar: null,
+  profile: {
+    greeting: 'Hola, soy Isani',
+    bio1: document.getElementById('p-bio1').value,
+    bio2: document.getElementById('p-bio2').value,
+  },
+  contact: {},
+  stats: {},
+  badge: { num: '100%', txt: 'Hecho a mano' },
+};
+
+function loadAdminData() {
+  // sync inputs with current page state
+  document.getElementById('p-greeting').value = document.getElementById('greeting-text').textContent;
+  document.getElementById('p-bio1').value      = document.getElementById('about-text-1').textContent.trim();
+  document.getElementById('p-bio2').value      = document.getElementById('about-text-2').textContent.trim();
+  document.getElementById('c-phone').value     = document.getElementById('contact-phone').textContent;
+  document.getElementById('c-instagram').value = document.getElementById('contact-instagram').textContent;
+  document.getElementById('c-email').value     = document.getElementById('contact-email').textContent;
+  document.getElementById('c-location').value  = document.getElementById('contact-location').textContent;
+  document.getElementById('s-num1').value      = document.getElementById('stat1-num').textContent;
+  document.getElementById('s-lbl1').value      = document.getElementById('stat1-label').textContent;
+  document.getElementById('s-num2').value      = document.getElementById('stat2-num').textContent;
+  document.getElementById('s-lbl2').value      = document.getElementById('stat2-label').textContent;
+  document.getElementById('s-num3').value      = document.getElementById('stat3-num').textContent;
+  document.getElementById('s-lbl3').value      = document.getElementById('stat3-label').textContent;
+  renderAdminGallery();
+}
+
+/* ═══════════════════════════════════════════
+   FILE UPLOAD — GALLERY
+═══════════════════════════════════════════ */
+function dragOver(e, id) { e.preventDefault(); document.getElementById(id).classList.add('drag-over'); }
+function dragLeave(id) { document.getElementById(id).classList.remove('drag-over'); }
+function dropFiles(e, target) {
+  e.preventDefault(); dragLeave('upload-zone-gal');
+  handleFiles(e.dataTransfer.files, target);
+}
+
+function handleFiles(files, target) {
+  if (!requireAuth()) return;
+  const errors = [];
+  Array.from(files).forEach(file => {
+    const err = validateFile(file);
+    if (err) { errors.push(`${file.name}: ${err}`); return; }
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const isVideo = ALLOWED_VID.includes(file.type);
+      const item = { url: ev.target.result, type: isVideo ? 'video' : 'image', name: sanitizeAttr(file.name) };
+      store.gallery.push(item);
+      addToPublicGallery(item);
+      renderAdminGallery();
+      showStatus('status-media', '✅ Archivo cargado correctamente.', 'success');
+    };
+    reader.readAsDataURL(file);
+  });
+  if (errors.length) showStatus('status-media', '⚠️ ' + errors.join(' | '), 'error');
+}
+
+function addToPublicGallery(item) {
+  const masonry = document.getElementById('gallery-masonry');
+  const div = document.createElement('div');
+  div.className = 'gal-item';
+  div.setAttribute('data-idx', store.gallery.length - 1);
+  const media = item.type === 'video'
+    ? `<video src="${item.url}" muted loop playsinline></video>`
+    : `<img src="${item.url}" alt="${sanitizeAttr(item.name)}" loading="lazy" />`;
+  div.innerHTML = `${media}<div class="gal-overlay"><span>${sanitize(item.name)}</span></div>`;
+  div.addEventListener('click', () => openLightbox(item));
+  masonry.prepend(div);
+}
+
+function renderAdminGallery() {
+  const grid = document.getElementById('gallery-admin-grid');
+  grid.innerHTML = '';
+  store.gallery.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'media-thumb';
+    const media = item.type === 'video'
+      ? `<video src="${item.url}" muted></video><span class="media-type-badge">VIDEO</span>`
+      : `<img src="${item.url}" alt="${sanitizeAttr(item.name)}" />`;
+    div.innerHTML = `${media}<button class="del-btn" onclick="deleteGalleryItem(${i})" aria-label="Eliminar">✕</button>`;
+    grid.appendChild(div);
+  });
+}
+
+function deleteGalleryItem(idx) {
+  if (!requireAuth()) return;
+  if (!confirm('¿Eliminar este elemento de la galería?')) return;
+  store.gallery.splice(idx, 1);
+  renderAdminGallery();
+  refreshPublicGallery();
+  showStatus('status-media', '🗑️ Eliminado.', 'success');
+}
+
+function refreshPublicGallery() {
+  const masonry = document.getElementById('gallery-masonry');
+  // Remove only uploaded items (those with data-idx)
+  masonry.querySelectorAll('[data-idx]').forEach(el => el.remove());
+  store.gallery.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'gal-item';
+    div.setAttribute('data-idx', i);
+    const media = item.type === 'video'
+      ? `<video src="${item.url}" muted loop playsinline></video>`
+      : `<img src="${item.url}" alt="${sanitizeAttr(item.name)}" loading="lazy" />`;
+    div.innerHTML = `${media}<div class="gal-overlay"><span>${sanitize(item.name)}</span></div>`;
+    div.addEventListener('click', () => openLightbox(item));
+    masonry.prepend(div);
+  });
+}
+
+/* ═══════════════════════════════════════════
+   HERO IMAGES
+═══════════════════════════════════════════ */
+const heroIds = ['hg1','hg2','hg3'];
+function setHeroImg(input, idx) {
+  if (!requireAuth()) return;
+  const file = input.files[0]; if (!file) return;
+  const err = validateFile(file); if (err) { showStatus('status-hero', err, 'error'); return; }
+  const reader = new FileReader();
+  reader.onload = ev => {
+    store.heroImgs[idx] = { url: ev.target.result, type: ALLOWED_VID.includes(file.type) ? 'video' : 'image' };
+    const cell = document.getElementById(heroIds[idx]);
+    const media = store.heroImgs[idx].type === 'video'
+      ? `<video src="${ev.target.result}" autoplay muted loop playsinline></video>`
+      : `<img src="${ev.target.result}" alt="Hero ${idx+1}" />`;
+    cell.innerHTML = media;
+  };
+  reader.readAsDataURL(file);
+}
+function saveHero() {
+  if (!requireAuth()) return;
+  document.getElementById('badge-num').textContent = sanitize(document.getElementById('badge-num-input').value) || '100%';
+  document.getElementById('badge-txt').textContent = sanitize(document.getElementById('badge-txt-input').value) || 'Hecho a mano';
+  showStatus('status-hero', '✅ Hero actualizado.', 'success');
+}
+
+/* ═══════════════════════════════════════════
+   PROFILE
+═══════════════════════════════════════════ */
+function handleAvatar(input) {
+  const file = input.files[0]; if (!file) return;
+  const err = validateFile(file, ALLOWED_IMG); if (err) { alert(err); return; }
+  const reader = new FileReader();
+  reader.onload = ev => {
+    document.getElementById('profile-avatar-img').src = ev.target.result;
+    store.avatar = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+function setAboutImg(input, slot) {
+  const file = input.files[0]; if (!file) return;
+  const err = validateFile(file, ALLOWED_IMG); if (err) { showStatus('status-profile', err, 'error'); return; }
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const target = slot === 'main' ? document.getElementById('about-main-img') : document.getElementById('about-accent-img');
+    target.innerHTML = `<img src="${ev.target.result}" alt="Foto ${slot}" style="width:100%;height:100%;object-fit:cover" />`;
+  };
+  reader.readAsDataURL(file);
+}
+function saveProfile() {
+  if (!requireAuth()) return;
+  document.getElementById('greeting-text').textContent  = sanitize(document.getElementById('p-greeting').value) || 'Hola, soy Isani';
+  document.getElementById('profile-name-display').textContent = sanitize(document.getElementById('p-greeting').value.replace(/^Hola,?\s*soy\s*/i,'')) || 'Isani';
+  document.getElementById('about-text-1').textContent   = sanitize(document.getElementById('p-bio1').value);
+  document.getElementById('about-text-2').textContent   = sanitize(document.getElementById('p-bio2').value);
+  showStatus('status-profile', '✅ Perfil actualizado correctamente.', 'success');
+}
+
+/* ═══════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════ */
+function saveContact() {
+  if (!requireAuth()) return;
+  document.getElementById('contact-phone').textContent     = sanitize(document.getElementById('c-phone').value);
+  document.getElementById('contact-instagram').textContent = sanitize(document.getElementById('c-instagram').value);
+  document.getElementById('contact-email').textContent     = sanitize(document.getElementById('c-email').value);
+  document.getElementById('contact-location').textContent  = sanitize(document.getElementById('c-location').value);
+  showStatus('status-contact', '✅ Contacto actualizado.', 'success');
+}
+
+/* ═══════════════════════════════════════════
+   STATS
+═══════════════════════════════════════════ */
+function saveStats() {
+  if (!requireAuth()) return;
+  document.getElementById('stat1-num').textContent   = sanitize(document.getElementById('s-num1').value);
+  document.getElementById('stat1-label').textContent = sanitize(document.getElementById('s-lbl1').value);
+  document.getElementById('stat2-num').textContent   = sanitize(document.getElementById('s-num2').value);
+  document.getElementById('stat2-label').textContent = sanitize(document.getElementById('s-lbl2').value);
+  document.getElementById('stat3-num').textContent   = sanitize(document.getElementById('s-num3').value);
+  document.getElementById('stat3-label').textContent = sanitize(document.getElementById('s-lbl3').value);
+  showStatus('status-stats', '✅ Estadísticas actualizadas.', 'success');
+}
+
+/* ═══════════════════════════════════════════
+   STATUS HELPER
+═══════════════════════════════════════════ */
+function showStatus(id, msg, type='success') {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.className = `status-bar show ${type}`;
+  setTimeout(() => { el.classList.remove('show'); }, 4000);
+}
+
+/* ═══════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════ */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+/* ═══════════════════════════════════════════
+   LIGHTBOX
+═══════════════════════════════════════════ */
+function openLightbox(item) {
+  const lb = document.getElementById('lightbox');
+  lb.querySelectorAll('img, video').forEach(el => el.remove());
+  const el = item.type === 'video' ? document.createElement('video') : document.createElement('img');
+  el.src = item.url;
+  if (item.type === 'video') { el.controls = true; el.autoplay = true; }
+  el.alt = item.name || '';
+  lb.appendChild(el);
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+document.getElementById('lightbox').addEventListener('click', e => {
+  if (e.target === document.getElementById('lightbox') || e.target.id === 'lightbox-close') {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+    document.getElementById('lightbox').querySelectorAll('video').forEach(v => v.pause());
+  }
+});
+
+/* ═══════════════════════════════════════════
+   CONTACT FORM
+═══════════════════════════════════════════ */
+let formCooldown = false;
+const f_msg = document.getElementById('f-msg');
+f_msg.addEventListener('input', () => {
+  document.getElementById('char-count').textContent = f_msg.value.length;
+});
+
+function validateEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+function submitForm() {
+  if (formCooldown) return;
+  const name   = document.getElementById('f-name').value.trim();
+  const email  = document.getElementById('f-email').value.trim();
+  const msg    = document.getElementById('f-msg').value.trim();
+  const status = document.getElementById('form-status');
+
+  if (!name || name.length < 2) { showFormErr('Por favor ingresá tu nombre.'); return; }
+  if (!email || !validateEmail(email)) { showFormErr('Ingresá un email válido.'); return; }
+  if (!msg || msg.length < 10) { showFormErr('Contanos tu idea (al menos 10 caracteres).'); return; }
+  if (msg.length > 1000) { showFormErr('El mensaje es demasiado largo.'); return; }
+
+  const btn = document.getElementById('form-btn');
+  btn.textContent = 'Enviando...'; btn.disabled = true;
+  formCooldown = true;
+
+  // Simulated send (in production, POST to backend)
+  setTimeout(() => {
+    document.getElementById('form-success').style.display = 'block';
+    status.className = 'status-bar'; status.textContent = '';
+    ['f-name','f-email','f-phone','f-msg'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('f-occasion').value = '';
+    document.getElementById('char-count').textContent = '0';
+    btn.textContent = 'Enviar consulta ✉️'; btn.disabled = false;
+    setTimeout(() => {
+      document.getElementById('form-success').style.display = 'none';
+      formCooldown = false;
+    }, 8000);
+  }, 1200);
+}
+function showFormErr(msg) {
+  const el = document.getElementById('form-status');
+  el.textContent = msg; el.className = 'status-bar show error';
+  setTimeout(() => el.classList.remove('show'), 4000);
+}
+
+/* ═══════════════════════════════════════════
+   NAVBAR SCROLL
+═══════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ═══════════════════════════════════════════
+   MOBILE MENU (simple toggle)
+═══════════════════════════════════════════ */
+function toggleMobile() {
+  const links = document.querySelector('.nav-links');
+  const isOpen = links.style.display === 'flex';
+  if (isOpen) {
+    links.style.display = 'none';
+  } else {
+    links.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:rgba(245,239,228,0.97);padding:2rem;gap:1.5rem;border-bottom:1px solid var(--crema-dark);backdrop-filter:blur(10px);z-index:999;';
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { links.style.display = 'none'; }, { once: true }));
+  }
+}
+
+/* ═══════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════ */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ═══════════════════════════════════════════
+   GALLERY PLACEHOLDER LIGHTBOX
+═══════════════════════════════════════════ */
+document.querySelectorAll('#gallery-masonry .gal-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const img = item.querySelector('img');
+    const vid = item.querySelector('video');
+    if (img) openLightbox({ url: img.src, type: 'image', name: img.alt });
+    if (vid) openLightbox({ url: vid.src, type: 'video', name: '' });
+  });
+});
+</script>
+</body>
+</html>
